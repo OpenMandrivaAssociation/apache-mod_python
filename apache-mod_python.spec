@@ -6,7 +6,7 @@
 Summary:	An embedded Python interpreter for the apache web server
 Name:		apache-%{mod_name}
 Version:	3.3.1
-Release:	%mkrel 2
+Release:	%mkrel 3
 Group:		System/Servers
 License:	Apache License
 URL:		http://www.modpython.org/
@@ -33,8 +33,8 @@ BuildRequires:  apache-modules >= 2.0.54
 BuildRequires:	apache-devel >= 2.0.54
 BuildRequires:	file
 BuildRequires:	flex >= 2.5.33
-Provides:	mod_python apache2-mod_python
-Obsoletes:	mod_python apache2-mod_python
+Provides:	mod_python
+Obsoletes:	mod_python
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
