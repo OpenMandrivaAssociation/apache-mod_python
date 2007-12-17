@@ -35,7 +35,6 @@ BuildRequires:	file
 BuildRequires:	flex >= 2.5.33
 Provides:	mod_python
 Obsoletes:	mod_python
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Mod_python is a module that embeds the Python language interpreter within
