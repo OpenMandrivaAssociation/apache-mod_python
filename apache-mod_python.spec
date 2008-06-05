@@ -86,7 +86,7 @@ libtoolize --copy --force; aclocal-1.7; autoconf --force
 
 export HTTPD="%{_sbindir}/httpd"
 
-%configure2_5x \
+%configure2_5x --localstatedir=/var/lib \
     --with-apxs=%{_sbindir}/apxs \
     --with-max-locks=4 \
     --with-mutex-dir=/var/cache/httpd/mod_python \
