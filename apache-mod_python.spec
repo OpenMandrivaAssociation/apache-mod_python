@@ -6,7 +6,7 @@
 Summary:	An embedded Python interpreter for the apache web server
 Name:		apache-%{mod_name}
 Version:	3.3.1
-Release:	%mkrel 6
+Release:	%mkrel 7
 Group:		System/Servers
 License:	Apache License
 URL:		http://www.modpython.org/
@@ -18,6 +18,7 @@ Patch0:		mod_python-3.0.3-version.patch
 Patch1:		mod_python-20020610-gsr.patch
 Patch2:		mod_python-3.1.3-ldflags.patch
 Patch3:		mod_python-3.1.4-cflags.patch
+Patch4:		mod_python-apr13.diff
 BuildRequires:	python
 BuildRequires:	python-devel
 BuildRequires:	automake1.7
@@ -67,6 +68,7 @@ http://localhost/manual/mod/mod_python
 %patch1 -p0 -b .gsr
 %patch2 -p1 -b .ldflags
 %patch3 -p1 -b .cflags
+%patch4 -p0 -b .apr13
 
 for i in `find . -type d -name CVS` `find . -type f -name .cvs\*` `find . -type f -name .#\*`; do
     if [ -e "$i" ]; then rm -r $i; fi >&/dev/null
