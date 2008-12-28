@@ -19,6 +19,7 @@ Patch1:		mod_python-20020610-gsr.patch
 Patch2:		mod_python-3.1.3-ldflags.patch
 Patch3:		mod_python-3.1.4-cflags.patch
 Patch4:		mod_python-apr13.diff
+Patch5:		mod_python-3.3.1-linkage.patch
 BuildRequires:	python
 BuildRequires:	python-devel
 BuildRequires:	automake1.7
@@ -69,6 +70,7 @@ http://localhost/manual/mod/mod_python
 %patch2 -p1 -b .ldflags
 %patch3 -p1 -b .cflags
 %patch4 -p0 -b .apr13
+%patch5 -p0 -b .linkage
 
 for i in `find . -type d -name CVS` `find . -type f -name .cvs\*` `find . -type f -name .#\*`; do
     if [ -e "$i" ]; then rm -r $i; fi >&/dev/null
@@ -87,7 +89,7 @@ rm -f configure
 libtoolize --copy --force; aclocal-1.7; autoconf --force
 
 export HTTPD="%{_sbindir}/httpd"
-
+%define _disable_ld_no_undefined 1
 %configure2_5x --localstatedir=/var/lib \
     --with-apxs=%{_sbindir}/apxs \
     --with-max-locks=4 \
