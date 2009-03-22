@@ -6,7 +6,7 @@
 Summary:	An embedded Python interpreter for the apache web server
 Name:		apache-%{mod_name}
 Version:	3.3.1
-Release:	%mkrel 10
+Release:	%mkrel 11
 Group:		System/Servers
 License:	Apache License
 URL:		http://www.modpython.org/
@@ -117,7 +117,7 @@ install -d %{buildroot}%{_sysconfdir}/httpd/conf/webapps.d
 mv %{buildroot}%{_libdir}/apache/%{mod_so} %{buildroot}%{_libdir}/apache-extramodules
 
 install -d %{buildroot}/var/www/html/addon-modules
-ln -s ../../../..%{_docdir}/%{name}-%{version} %{buildroot}/var/www/html/addon-modules/%{name}-%{version}
+ln -s ../../../..%{_docdir}/%{name} %{buildroot}/var/www/html/addon-modules/%{name}
 
 # fix location for mutex files
 install -d %{buildroot}/var/cache/httpd/mod_python
@@ -129,7 +129,7 @@ install -m0644 %{mod_conf} %{buildroot}%{_sysconfdir}/httpd/modules.d/
 install -m0644 mod_python-manual.conf %{buildroot}%{_sysconfdir}/httpd/conf/webapps.d/000_mod_python.conf
 
 # fix absolute path to docdir
-perl -pi -e "s|_REPLACE_ME_|%{_docdir}/%{name}-doc-%{version}|g" %{buildroot}%{_sysconfdir}/httpd/conf/webapps.d/*_mod_python.conf
+perl -pi -e "s|_REPLACE_ME_|%{_docdir}/%{name}-doc|g" %{buildroot}%{_sysconfdir}/httpd/conf/webapps.d/*_mod_python.conf
 
 cat > README.mdv << EOF
 
