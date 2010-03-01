@@ -76,10 +76,6 @@ for i in `find . -type d -name CVS` `find . -type f -name .cvs\*` `find . -type 
     if [ -e "$i" ]; then rm -r $i; fi >&/dev/null
 done
 
-# strip away annoying ^M
-find . -type f|xargs file|grep 'CRLF'|cut -d: -f1|xargs perl -p -i -e 's/\r//'
-find . -type f|xargs file|grep 'text'|cut -d: -f1|xargs perl -p -i -e 's/\r//'
-
 cp %{SOURCE2} %{mod_conf}
 cp %{SOURCE3} mod_python-manual.conf
 
