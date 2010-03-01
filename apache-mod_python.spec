@@ -6,7 +6,7 @@
 Summary:	An embedded Python interpreter for the apache web server
 Name:		apache-%{mod_name}
 Version:	3.3.1
-Release:	%mkrel 12
+Release:	%mkrel 13
 Group:		System/Servers
 License:	Apache License
 URL:		http://www.modpython.org/
@@ -20,20 +20,16 @@ Patch2:		mod_python-3.1.3-ldflags.patch
 Patch3:		mod_python-3.1.4-cflags.patch
 Patch4:		mod_python-apr13.diff
 Patch5:		mod_python-3.3.1-linkage.patch
-BuildRequires:	python
 BuildRequires:	python-devel
 BuildRequires:	automake1.7
 BuildRequires:	autoconf2.5
-Requires(pre): rpm-helper
-Requires(postun): rpm-helper
-Requires(pre):	apache-conf >= 2.0.54
-Requires(pre):	apache >= 2.0.54
-Requires:	apache-conf >= 2.0.54
-Requires:	apache >= 2.0.54
-BuildRequires:  apache-mpm-prefork >= 2.0.54
+%if %mdkversion < 201010
+Requires(post):   rpm-helper
+Requires(postun):   rpm-helper
+%endif
+Requires:	apache
 BuildRequires:  apache-modules >= 2.0.54
 BuildRequires:	apache-devel >= 2.0.54
-BuildRequires:	file
 BuildRequires:	flex >= 2.5.33
 Provides:	mod_python
 Obsoletes:	mod_python
@@ -178,16 +174,14 @@ if [ "$1" = "0" ]; then
 fi
 
 %post doc
-if [ -f /var/lock/subsys/httpd ]; then
-    %{_initrddir}/httpd restart 1>&2;
-fi
+%if %mdkversion < 201010
+%_post_webapp
+%endif
 
 %postun doc
-if [ "$1" = "0" ]; then
-    if [ -f /var/lock/subsys/httpd ]; then
-	%{_initrddir}/httpd restart 1>&2
-    fi
-fi
+%if %mdkversion < 201010
+%_postun_webapp
+%endif
 
 %clean
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
