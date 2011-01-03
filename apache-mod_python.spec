@@ -6,7 +6,7 @@
 Summary:	An embedded Python interpreter for the apache web server
 Name:		apache-%{mod_name}
 Version:	3.3.1
-Release:	%mkrel 17
+Release:	%mkrel 18
 Group:		System/Servers
 License:	Apache License
 URL:		http://www.modpython.org/
@@ -21,7 +21,7 @@ Patch3:		mod_python-3.1.4-cflags.patch
 Patch4:		mod_python-apr13.diff
 Patch5:		mod_python-3.3.1-linkage.patch
 BuildRequires:	python-devel
-BuildRequires:	automake1.7
+BuildRequires:	automake
 BuildRequires:	autoconf2.5
 %if %mdkversion < 201010
 Requires(post):   rpm-helper
@@ -78,7 +78,7 @@ cp %{SOURCE3} mod_python-manual.conf
 %build
 export WANT_AUTOCONF_2_5=1
 rm -f configure
-libtoolize --copy --force; aclocal-1.7; autoconf --force
+libtoolize --copy --force; aclocal; autoconf --force
 
 export HTTPD="%{_sbindir}/httpd"
 %define _disable_ld_no_undefined 1
