@@ -1,0 +1,11 @@
+--- src/Makefile.in~	2008-12-28 17:01:48.000000000 +0100
++++ src/Makefile.in	2008-12-28 17:16:11.000000000 +0100
+@@ -23,7 +23,7 @@
+ # requires flex 2.5.31 for reentrant support
+ LEX=@LEX@
+ INCLUDES=@INCLUDES@
+-LIBS=@LIBS@
++LIBS=@LIBS@ -lapr-1 -laprutil-1
+ LDFLAGS=@LDFLAGS@
+ OPT=
+ CFLAGS=$(OPT) $(INCLUDES) 

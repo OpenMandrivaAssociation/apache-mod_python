@@ -1,0 +1,12 @@
+--- configure.in	2002-12-30 19:59:34.000000000 +0100
++++ configure.in.oden	2003-04-06 20:53:16.000000000 +0200
+@@ -137,8 +137,7 @@
+ 
+   # check Apache version
+   AC_MSG_CHECKING(Apache version)
+-  HTTPD="`${APXS} -q SBINDIR`/`${APXS} -q TARGET`"
+-  ver=`$HTTPD -v | awk '/version/ {print $3}' | awk -F/ '{print $2}'`
++  ver="`${APXS} -q ap_version`"
+   AC_MSG_RESULT($ver)
+ 
+   # make sure version begins with 2

@@ -1,0 +1,13 @@
+Index: src/include/mod_python.h
+===================================================================
+--- src/include/mod_python.h
++++ src/include/mod_python.h	2008-12-24 22:41:21.000000000 +0100
+@@ -136,6 +136,8 @@
+ #define LONG_LONG PY_LONG_LONG
+ #endif
+ 
++PyObject *get_ServerReturn();
++
+ /* structure to hold interpreter data */
+ typedef struct {
+     PyInterpreterState *istate;
