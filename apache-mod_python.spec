@@ -9,7 +9,7 @@ Version:	3.3.1
 Release:	%mkrel 20
 Group:		System/Servers
 License:	Apache License
-URL:		http://www.modpython.org/
+URL:		https://www.modpython.org/
 Source0:	http://www.apache.org/dist/httpd/modpython/%{mod_name}-%{version}.tgz
 Source1:	http://www.apache.org/dist/httpd/modpython/%{mod_name}-%{version}.tgz.asc
 Source2:	%{mod_conf}
