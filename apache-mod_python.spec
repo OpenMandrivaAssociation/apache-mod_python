@@ -20,6 +20,8 @@ Patch2:		mod_python-3.1.3-ldflags.patch
 Patch3:		mod_python-3.1.4-cflags.patch
 Patch4:		mod_python-apr13.diff
 Patch5:		mod_python-3.3.1-linkage.patch
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
 BuildRequires:	python-devel
 BuildRequires:	automake
 BuildRequires:	autoconf2.5
